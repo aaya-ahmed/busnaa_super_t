@@ -1,8 +1,10 @@
+import { LatLngExpression } from "leaflet";
+
 export const environment = {
   production: false,
   chatSenderName: 'Busnaa',
   campaignUrl: 'https://api-super.busnaa.com/api/campaign/',
-    fixedLocation:[30.0393,31.2368] as [number,number],
+    fixedLocation:[30.0393,31.2368] as LatLngExpression,
   firebase: {
     apiKey: "AIzaSyAX_iBUNQ82EpVk5RI_EyAAF11yG5uArKg",
     authDomain: "heatmap-efabf.firebaseapp.com",
