@@ -1,0 +1,19 @@
+.pagination_btns{
+    display: flex;
+    justify-content: flex-start;
+    align-items :baseline;
+}
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        color: #ffd428;
+    }
+    &.active{
+        color:#ffd428;
+    }
+}

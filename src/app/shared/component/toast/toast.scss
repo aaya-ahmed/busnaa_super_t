@@ -1,0 +1,25 @@
+.toast-container {
+    width: 300px;
+    background-color: white;
+    box-shadow:10px 10px 13px 2px #0000004d;
+    padding: 10px 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    color: white;
+    gap: 10px;
+    p{
+        margin: 0;
+    }
+}
+.success{
+    background-color: rgb(77, 137, 77);
+}
+.error{
+    background-color: rgb(189 0 0);
+    color: white;
+}
+.warning{
+    background-color: rgb(231 220 6);
+    color: black;
+}

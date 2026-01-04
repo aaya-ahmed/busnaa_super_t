@@ -1,0 +1,10 @@
+<div class="toast-container" [ngClass]="data.type">
+    <span class="toast-icon">
+        @switch (data.type) {
+            @case ('success'){✔️}
+            @case ('error'){❗}
+            @case ('warning') {⚠️}
+        }
+    </span>
+    <p class="toast-text">{{data.message}}</p>
+</div>

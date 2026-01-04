@@ -1,0 +1,23 @@
+@if(data().loading){
+    <div class="loading">
+        <mat-spinner [diameter]="30">
+        </mat-spinner>
+    </div>
+
+}@else if(data().trips.length==0){
+    <div class="no-data">
+        {{'student has no trips'|translate}}
+    </div>
+}@else {
+@for(item of data().trips ;track item.key){
+<mat-card class="trip-card">
+    <div>
+        {{item?.name}}
+    </div>
+    <div>
+        <mat-checkbox [checked]="item?.to_school" [disabled]="true">{{'morning'|translate}}</mat-checkbox>
+        <mat-checkbox [checked]="!item?.to_school" [disabled]="true">{{'evening'|translate}}</mat-checkbox>
+    </div>
+</mat-card>
+}
+}

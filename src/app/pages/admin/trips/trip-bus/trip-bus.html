@@ -1,0 +1,13 @@
+@if(isLoading()){
+<div class="loading">
+    <busnaa-spinner [size]="20"></busnaa-spinner>
+</div>
+}@else{
+@if(!bus().name){
+<p class="no-data">{{'no bus assigned to this trip'|translate}}</p>
+}@else {
+<div class="students-list">
+    <p>- {{bus().name}}</p>
+</div>
+}
+}

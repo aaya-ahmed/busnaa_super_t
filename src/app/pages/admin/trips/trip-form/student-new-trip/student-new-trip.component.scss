@@ -1,0 +1,50 @@
+.excel-section {
+    display: flex;
+    justify-content: flex-end;
+
+    .import-label {
+        margin: 1rem 0;
+    }
+}
+
+.options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:first-child{
+
+        border: none;
+    }
+
+    .mat-mdc-form-field {
+        width: 100%;
+    }
+}
+.form{
+    display: block;
+    div{
+        &:first-child{
+            display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+        }
+    }
+}
+@media (max-width:450px) {
+    .options{
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .single_list_item {
+    width: 100%;
+    flex-direction: column;
+}
+
+}

@@ -1,0 +1,18 @@
+<mat-radio-group name="radioButtons" [value]="isMorning?'M':'E'" (change)="onChangeOption($event.value)"
+    class="radioButtons">
+    <mat-radio-button value="M">{{'morning trip'|translate}}</mat-radio-button>
+    <mat-radio-button value="E">{{'evening trip'|translate}}</mat-radio-button>
+</mat-radio-group>
+@if(isLoading()){
+<div class="loading">
+    <busnaa-spinner [size]="30"></busnaa-spinner>
+</div>
+}@else{
+@if(!supervisor().name){
+<p class="no-data">{{'no supervisor assigned to this trip'|translate}}</p>
+}@else {
+<div class="students-list">
+    <p>- {{supervisor().name}}</p>
+</div>
+}
+}

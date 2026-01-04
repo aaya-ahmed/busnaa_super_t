@@ -1,0 +1,16 @@
+<footer>
+    <div id="language">
+        <svg>
+            <use xlink:href="#language"></use>
+        </svg>
+        <select (change)="switchLang($event)">
+            @for(language of languagesArray;track language){
+            <option [value]="language" [selected]="language == translate.getCurrentLang()">{{
+                languages[language].title}}</option>
+            }
+        </select>
+    </div>
+    <div class="home-copy">
+        {{ 'login_copy' | translate }}
+    </div>
+</footer>

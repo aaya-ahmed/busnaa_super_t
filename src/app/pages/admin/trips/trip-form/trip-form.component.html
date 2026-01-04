@@ -1,0 +1,195 @@
+<div class="form_box">
+  <h2>
+    @if(isAdd()){
+    {{ 'add_new' | translate }}
+    }@else {
+      {{ 'edit' | translate }} {{ 'trip' | translate }}
+    }
+  </h2>
+  @if(isReady()){
+      <div>
+    <mat-stepper orientation="vertical" [linear]="true" #stepper (selectionChange)="onStepChange($event)" >
+      <mat-step [label]="'basicInfo'|translate">
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'name' | translate }}</mat-label>
+            <input matInput placeholder="Name" [field]="mainForm.name">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'roadLine' | translate }}</mat-label>
+            <input matInput placeholder="roadLine" [field]="mainForm.busName">
+          </mat-form-field>
+          <mat-form-field floatLabel="always" appearance="outline">
+            <mat-label>{{ 'chat' | translate }}</mat-label>
+            <mat-slide-toggle color="primary" [field]="mainForm.onlyAdmin">{{'onlyAdmin'|translate}}</mat-slide-toggle>
+            <input matInput style="display:none" />
+          </mat-form-field>
+          <div class="controls">
+            @if(mainSubmitting()){
+              <mat-spinner diameter="20"></mat-spinner>
+            }
+            @if(!mainSubmitting()){
+              <button type="button" mat-raised-button matStepperNext 
+                (click)="saveMainData()"
+                [disabled]="mainForm().invalid()">
+                {{'next'|translate}}</button>
+            }
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [label]="'trip'|translate" [completed]="!!(eveningKey()&&morningKey())">
+        <mat-tab-group dynamicHeight>
+          <mat-tab [label]="'morningTrip'|translate">
+            <div class="tab_content">
+              <mat-stepper orientation="vertical" (selectionChange)="setLastStep($event,'M')">
+                <mat-step [label]="'tripInfo'|translate" [completed]="!(this.isAdd() && this.isFirst())">
+                  <form>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'start' | translate }}</mat-label>
+                      <input matInput placeholder="Start" [field]="moriningDataForm.start">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'end' | translate }}</mat-label>
+                      <input matInput placeholder="End" [field]="moriningDataForm.end">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'supervisor' | translate }}</mat-label>
+                      <mat-select [field]="moriningDataForm.supervisor">
+                        @for( item of supervisors();track item.key){
+                          <mat-option [value]="item.key" class="option">
+                            <span>
+                              {{item.name}}
+                            </span>
+                            <span>
+                              {{item.phone}}
+                            </span>
+                          </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{'schoolLocation'|translate}}</mat-label>
+                      <mat-select  [field]="moriningDataForm.school_locationId">
+                        @for(location of locations();track location){
+                          <mat-option [value]="location.key">
+                            {{ location.name}}
+                          </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+                    <div class="controls">
+                      @if(morningSubmitting()){
+                        <mat-spinner diameter="20"></mat-spinner>
+                      }
+                      <button mat-raised-button matStepperNext type="button" (click)="updateMorningTrip()"
+                        [disabled]="morningSubmitting()||moriningDataForm().invalid()">
+                        {{'next'|translate}}</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [label]="'additional_supervisor'|translate">
+                  @if(morningKey()&&lastStep().type=='M'){
+                        <busnaa-additional-supervisor [isAdd]="isAdd()" [mode]="'M'" [morningTripId]="morningKey()" [bus]="bus"
+                          [eveningTripId]="eveningKey()"></busnaa-additional-supervisor>
+                      }
+                  <div class="controls">
+                    <button mat-raised-button type="button" matStepperPrevious>{{'prev'|translate}}</button>
+                    <button mat-raised-button type="button" matStepperNext >{{'next'|translate}}</button>
+                  </div>
+                </mat-step>
+                <mat-step [label]="'students'|translate">
+                  @if(morningKey()&&lastStep().type=='M'){
+                      <busnaa-student-new-trip [isAdd]="isAdd()" [mode]="'M'" [bus]="bus" [morningTripId]="morningKey()"
+                        [eveningTripId]="eveningKey()"></busnaa-student-new-trip>
+                  }
+                  <div class="controls">
+                    <button mat-raised-button type="button" matStepperPrevious>{{'prev'|translate}}</button>
+                    <button mat-raised-button type="button" matStepperNext>{{'next'|translate}}</button>
+                  </div>
+                </mat-step>
+                <mat-step [label]="'map'">
+                  @if(morningKey()&&lastStep().type=='M'&&lastStep().isMorningLast){
+                    <!-- <app-users-location [tripKey]="morningKey"
+                       [schoolLocationId]="schoolLocationId"
+                      [isMorning]="true"></app-users-location> -->
+                  }
+                </mat-step>
+              </mat-stepper>
+            </div>
+          </mat-tab>
+          <mat-tab [label]="'eveningTrip'|translate" [disabled]="this.isAdd() && this.isFirst()">
+            <div class="tab_content">
+              <mat-stepper orientation="vertical" (selectionChange)="setLastStep($event,'E')">
+                <mat-step [label]="'tripInfo'|translate">
+                  <form>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'start' | translate }}</mat-label>
+                      <input matInput placeholder="Start"  [field]="eveningDataForm.start">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'end' | translate }}</mat-label>
+                      <input matInput placeholder="End"   [field]="eveningDataForm.end" >
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'supervisor' | translate }}</mat-label>
+                      <mat-select [field]="eveningDataForm.supervisor">
+                        @for(item of supervisors();track item){
+                          <mat-option  [value]="item.key" class="option">
+                            <span>
+                              {{item.name}}
+                            </span>
+                            <span>
+                              {{item.phone}}
+                            </span>
+                          </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+                    <div class="controls">
+                      @if(eveningSubmitting()){
+                        <mat-spinner diameter="20"></mat-spinner>
+                      }
+                      <button mat-raised-button matStepperNext type="button" (click)="updateEveningTrip()"
+                        [disabled]="eveningSubmitting()||eveningDataForm().invalid()">
+                        {{'next'|translate}}</button>
+                    </div>
+                  </form>
+                </mat-step>
+                <mat-step [label]="'additional_supervisor'|translate">
+                  @if(eveningKey()&&lastStep().type=='E'){
+                    <busnaa-additional-supervisor [isAdd]="isAdd()" [mode]="'E'" [bus]="bus" [morningTripId]="morningKey()"
+                      [eveningTripId]="eveningKey()"></busnaa-additional-supervisor>
+                  }
+                  <div class="controls">
+                    <button mat-raised-button type="button" matStepperPrevious>{{'prev'|translate}}</button>
+                    <button mat-raised-button type="button" matStepperNext>{{'next'|translate}}</button>
+                  </div>
+                </mat-step>
+                <mat-step [label]="'students'|translate">
+                  @if(eveningKey()&&lastStep().type=='E'){
+                    <busnaa-student-new-trip [isAdd]="isAdd()" [mode]="'E'" [bus]="bus" [morningTripId]="morningKey()"
+                      [eveningTripId]="eveningKey()"></busnaa-student-new-trip>
+
+                  }
+                  <div class="controls">
+                    <button mat-raised-button type="button" matStepperPrevious>{{'prev'|translate}}</button>
+                    <button mat-raised-button type="button" matStepperNext>{{'next'|translate}}</button>
+                  </div>
+                </mat-step>
+                <mat-step [label]="'map'">
+                  @if(eveningKey()&&lastStep().type=='E'&&lastStep().isEveningLast){
+<!-- <app-users-location [tripKey]="eveningKey"
+                    [schoolLocationId]="schoolLocationId"
+                    [isMorning]="false"></app-users-location> -->
+                  }
+                </mat-step>
+              </mat-stepper>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-step>
+    </mat-stepper>
+
+  </div>
+  }
+</div>

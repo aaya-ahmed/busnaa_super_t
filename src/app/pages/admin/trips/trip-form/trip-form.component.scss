@@ -1,0 +1,48 @@
+.data_loader {
+    font-size: 14px;
+    display: inline-block;
+    background: #ffd428;
+    padding: 4px 14px;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+    .controls{
+        display: flex;
+        justify-content: end;
+    }
+.spinner {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+    border: 3px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    vertical-align: middle;
+}
+.file_input{
+    // visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+::ng-deep{
+     .mat-option-text{
+        display: flex!important;
+        justify-content: space-between!important;
+    }
+    .mat-vertical-content-container{
+        margin: 0!important;
+    }
+}

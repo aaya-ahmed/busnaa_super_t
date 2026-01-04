@@ -1,0 +1,67 @@
+<div class="main">
+    <section class="analatics">
+        <div class="filter">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> {{'filter'|translate}} </mat-panel-title>
+                    </mat-expansion-panel-header>
+                        <mat-radio-group [value]="toSchool()?'M':'E'" (change)="onFilterChange('time',$event.value)" class="timeOptions">
+                            <mat-radio-button value="M" >{{'morning'|translate}}</mat-radio-button>
+                            <mat-radio-button value="E" >{{'evening'|translate}}</mat-radio-button>
+                        </mat-radio-group>
+                        @if(toSchool()){
+                            <mat-form-field >
+                                <mat-label>{{'distination'|translate}}</mat-label>
+                                <mat-select (selectionChange)="onFilterChange('location',$event.value)">
+                                    <mat-option [value]="''">{{'all'|translate}}</mat-option>
+                                    @for(location of locations(); track location.key){
+                                        <mat-option [value]="location.key">{{location.name}}</mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        }
+                    <mat-form-field>
+                        <mat-label>{{'trip'|translate}}</mat-label>
+                        <mat-select (selectionChange)="onFilterChange('trip',$event.value)">
+                            <mat-option [value]="''">{{'all'|translate}}</mat-option>
+                            @for(trip of dropDownTrips(); track trip.name){
+                                <mat-option [value]="tripKey(trip)">{{trip.name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>{{'status'|translate}}</mat-label>
+                        <mat-select (selectionChange)="onFilterChange('status',$event.value)">
+                            <mat-option [value]="-1">{{'all'|translate}}</mat-option>
+                            <mat-option [value]="0">{{'online'|translate}}</mat-option>
+                            <mat-option [value]="1">{{'offline'|translate}}</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    @if(errorMessage()){
+                        <span  class="invalid">
+                            {{errorMessage()}}
+                        </span>
+                    }
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div class="trips">
+                <div>
+                    <h5>{{'online'|translate}}</h5>
+                    <p>{{activeTripsNumber()}}</p>
+                </div>
+                <div>
+                    <h5>{{'offline'|translate}}</h5>
+                    <p>{{inActiveTripsNumber()}}</p>
+                </div>
+        </div>
+    </section>
+    <section class="map-section">
+        <div class="map_container">
+            <div class="map" leaflet [leafletOptions]="options()" (leafletMapReady)="onMapReady($event)">
+            </div>
+        </div>
+    </section>
+</div>

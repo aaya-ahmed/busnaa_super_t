@@ -1,0 +1,8 @@
+@use '../../../../variables' as colors;
+
+.popup_header{
+  background: colors.$yellow;
+  border-radius: 4px 4px 0 0;
+  padding: 10px 20px;
+  color: colors.$black;
+}

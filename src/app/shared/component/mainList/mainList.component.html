@@ -1,0 +1,48 @@
+@defer (when search.length > 0) {
+<busnaa-search [seachKeys]="search" (searchValue)="searchChange($event)"></busnaa-search>
+}
+<div class="container">
+  <div class="tbl_header">
+    @for (header of labels; track header; let i = $index) {
+    <div [ngClass]="header.class" class="col-4 col-xs-12">{{ header.label | translate }}</div>
+    }
+  </div>
+
+  <div class="tbl_body">
+    @if (noData) {
+    <p class="nodata_txt">{{ 'noData' | translate }}</p>
+    }
+    @else {
+    @for (row of data; track row) {
+    <mat-card>
+      @for (key of rowKeys ; track key) {
+      <div class="col-4 col-xs-12" [ngClass]="key.class??''">
+        {{getNestedValue(row, key?.key)|dynamicSwitchPipe:key.pipe }}
+      </div>
+      }
+      @if (!!actions) {
+      <div class="col-4 col-xs-12 actions">
+        @for (action of actions; track action) {
+        @if(action.icon==='toggle'){
+        <mat-slide-toggle color="primary" (click)="action.click(row)" [disabled]="!!isProcessOpration()"
+          [checked]="getNestedValue(row,action.check)" [matTooltip]="action.tooltip| translate">
+        </mat-slide-toggle>
+        }@else {
+        <mat-icon mat-list-icon [matTooltip]="action.tooltip| translate" 
+          (click)="!isProcessOpration()&&action.click(row)">{{action.icon}}</mat-icon>
+        }
+        }
+      </div>
+      }
+
+    </mat-card>
+
+    }
+    @if(loader) {
+    <busnaa-skeleton type="rows"></busnaa-skeleton>
+    }
+    }
+  </div>
+</div>
+<!-- Pagination component can be uncommented if needed -->
+<busnaa-pagination [data]="page"  (pageChange)="onChangePage($event)"></busnaa-pagination>

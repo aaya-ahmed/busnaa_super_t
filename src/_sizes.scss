@@ -1,0 +1,30 @@
+$breakpoints: (
+  "": 0, 
+  "sm":959.99px,
+  "md": 960px,
+  "lg": 1280px,
+  "xl":1920px
+);
+
+@each $bp, $min-width in $breakpoints {
+  @if $min-width == 0 {
+    // No media query for default .col-*
+    @for $i from 1 through 12 {
+      .col-#{$i} {
+        flex: 1;
+        width: calc((#{$i} / 12) * 100% );
+      }
+    }
+  } @else {
+    // Media query
+    @media (min-width: #{$min-width}) {
+      @for $i from 1 through 12 {
+        .col-#{$bp}-#{$i} {
+          flex: 1;
+          width: calc((#{$i} / 12) * 100% );
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+<div class="page_hd">
+  <h2>{{ 'schoolsLocations' | translate }}</h2>
+  <div class="float-actions">
+    <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> {{ 'add_new' | translate }}</button>
+  </div>
+</div>
+<busnaa-main-list 
+[actions]="actions" 
+[labels]="[{label: 'name' },{ label: 'country' },{label:'government'},{label: 'actions' ,class:'actions'}]" 
+[rowKeys]="[{key:'name'},{key:'country'},{key:'government'}]" 
+[service]="service"
+[isProcessOpration]="isProcessOpration()"
+[refresh]="refresh()"
+>
+</busnaa-main-list>

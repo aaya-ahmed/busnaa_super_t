@@ -1,0 +1,12 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+        <p>{{'confirm'|translate}}</p>
+    </div>
+    <div class="dialog-body">
+        <p>{{data.message}}</p>
+    </div>
+    <div class="dialog-footer">
+        <button class="yes-button" mat-button (click)="close(true)">{{data.yesText|translate}}</button>
+        <button mat-button (click)="close(false)">{{data.noText|translate}}</button>
+    </div>
+</div>

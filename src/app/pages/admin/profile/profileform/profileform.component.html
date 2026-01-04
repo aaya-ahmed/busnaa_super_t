@@ -1,0 +1,37 @@
+<div class="form_box">
+  <h2>{{ 'update' | translate }} {{ 'profile' | translate }}</h2>
+  <div>
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'name' | translate }}</mat-label>
+        <input matInput placeholder="Name" [field]="dataForm.name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'country_code' | translate }}</mat-label>
+        <input matInput placeholder="Country Code" [field]="dataForm.countryCode">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'location' | translate }}</mat-label>
+        <input matInput placeholder="Location" [field]="dataForm.location">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'phone' | translate }}</mat-label>
+        <input matInput placeholder="Phone Number" [field]="dataForm.phoneNumber">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'address' | translate }}</mat-label>
+        <textarea matInput placeholder="Address" rows="4" [field]="dataForm.address" cdkTextareaAutosize></textarea>
+      </mat-form-field>
+
+
+      <div>
+        <button mat-raised-button color="accent" type="button" (click)="save()" [disabled]="!dataForm().valid()">{{ 'save' | translate }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+

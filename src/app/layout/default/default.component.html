@@ -1,0 +1,20 @@
+<mat-drawer-container>
+  <mat-drawer [mode]="mode" [opened]="menuOpen == 'yes'" #drawer  (openedChange)="onChangeMenu($event)">
+    <busnaa-sidebar></busnaa-sidebar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <busnaa-header (menuStatus)="toggleMenu()" [opened]="menuOpen == 'yes'"></busnaa-header>
+    <mat-drawer-container class="side_page" hasBackdrop="true" >
+      <mat-drawer [class]="classes" position="end" [opened]="openSide" [disableClose]="true">
+        <busnaa-sidehost (openSidebar)="openSidebar($event);"></busnaa-sidehost>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="cs-container">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+    <busnaa-footer class="footer-container"></busnaa-footer>
+  </mat-drawer-content>
+</mat-drawer-container>
+

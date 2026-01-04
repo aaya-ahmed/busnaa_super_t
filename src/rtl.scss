@@ -1,0 +1,30 @@
+html[dir="rtl"] {
+    #form_box > div > span{
+      text-align: right !important;
+      >label{
+        text-align: right !important;
+      }
+    }
+  
+    
+    #language{
+        right: auto;
+        left: 20px;
+        svg{
+            margin-right: 0px;
+            margin-left: 10px;
+        }
+    }
+
+    app-footer{
+      p {
+        padding-right: 0px;
+        padding-left: 151px;
+      }
+    }
+
+    .tbl_body .mat-mdc-card svg{
+      margin-right: 0px;
+      margin-left: 10px;
+    }
+}

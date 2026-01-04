@@ -1,0 +1,34 @@
+<mat-icon class="online" mat-list-icon [matTooltip]="'status' | translate"
+    [ngStyle]="{'color':parent()?.track_info?.online?'green':'red', 'width':'15px','height':'15px'}">circle</mat-icon>
+    <div>
+    <h3>{{ 'name' | translate }}</h3>
+    <p>{{ parent()?.name||''}}</p>
+</div>
+<div>
+    <h3>{{ 'address' | translate }}</h3>
+    <p>{{ parent()?.address||''}}</p>
+</div>
+<div>
+    <h3>{{ 'phone' | translate }}</h3>
+    <p>{{ parent()?.phone||''}}</p>
+</div>
+<div>
+    <h3>{{ 'app version' | translate }}</h3>
+    <p>{{ parent()?.track_info?.app_version||'-'}}</p>
+</div>
+<div>
+    <h3>{{ 'device info' | translate }}</h3>
+    <p>{{ parent()?.track_info?.device_info||'-'}}</p>
+</div>
+<div>
+    <h3>{{ 'last seen' | translate }}</h3>
+    <p>{{ parent()?.track_info?.last_seen||'-'}}</p>
+</div>
+<div>
+    <h3>{{ 'platform' | translate }}</h3>
+    <p>{{ parent()?.track_info?.platform||'-'}}</p>
+</div>
+<div>
+    <h3>{{ 'platform version' | translate }}</h3>
+    <p>{{ parent()?.track_info?.platform_version||'-'}}</p>
+</div>

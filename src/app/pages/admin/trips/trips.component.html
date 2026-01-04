@@ -1,0 +1,15 @@
+<div class="page_hd">
+  <h2>{{ 'trips' | translate }}</h2>
+  <div class="float-actions">
+    <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> {{ "addNew" | translate }}</button>
+    <!-- <button mat-raised-button (click)="assignManager()"><mat-icon>playlist_add_check</mat-icon> {{ 'assign' | translate }} </button> -->
+  </div>
+</div>
+<busnaa-main-list 
+[actions]="actions"
+[labels]="[{label: 'name' },{ label: 'start',class:'red'},{ label: 'end',class:'green' },{label: 'actions' }]"
+[rowKeys]="[{key:'name'},{key:'morning?.start',class:'red'},{key:'morning?.end',class:'green' }]"
+[service]="service"
+[refresh]="refresh()"
+>
+</busnaa-main-list>

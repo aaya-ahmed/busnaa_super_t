@@ -1,0 +1,6 @@
+@if (data) {
+  <div class="pagination_btns" dir="ltr">
+    <button mat-button  (click)="prevPage(data.prevPage)" [disabled]="count==0||!data.prevPage"><mat-icon>keyboard_arrow_left</mat-icon>{{'previous'|translate}}</button>
+    <button mat-button  (click)="nextPage(data.nextPage)" [disabled]="!data.nextPage">{{'next'|translate}}<mat-icon>keyboard_arrow_right</mat-icon></button>
+  </div>
+}

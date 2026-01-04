@@ -1,0 +1,56 @@
+<div class="form_box">
+  <h2>
+    @if(data().key){
+    {{ 'update' | translate }} }
+    @else{
+    {{ 'add' | translate }}
+    }
+    {{ 'supervisor' | translate }}</h2>
+  <form>
+    <!-- Name -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'name' | translate }}</mat-label>
+      <input matInput placeholder="Name" [field]="dataForm.name">
+      @if(dataForm.name().invalid()&& dataForm.name().touched()){
+      @for(errorKey of dataForm.name().errors();track $index){
+      <mat-error>{{errorKey.message}}</mat-error>
+      }
+      }
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'phone' | translate }}</mat-label>
+      <input matInput placeholder="Phone" [field]="dataForm.phone">
+      @if(dataForm.phone().invalid()&& dataForm.phone().touched()){
+        @for(errorKey of dataForm.phone().errors();track $index){
+        <mat-error>{{errorKey.message}}</mat-error>
+        }
+      }
+    </mat-form-field>
+
+    <!-- Block Toggle -->
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ 'block' | translate }}</mat-label>
+      <mat-slide-toggle color="primary" [field]="dataForm.isBlocked" name="isBlocked">
+        {{ 'block' | translate }}
+      </mat-slide-toggle>
+      <input matInput style="display: none;" />
+    </mat-form-field>
+
+    <!-- Buttons / Loader -->
+    <div>
+      @if(submitting()){
+      <div class="gn_loader">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+      }@else {
+      <button mat-raised-button class="save" (click)="save()"
+        [disabled]="!dataForm().dirty() || dataForm().invalid()">
+        {{ 'save' | translate }}
+      </button>
+      <button mat-raised-button (click)="cancal()">{{ 'cancel' | translate }}</button>
+      }
+    </div>
+  </form>
+</div>

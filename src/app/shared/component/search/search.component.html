@@ -1,0 +1,28 @@
+<div class="searching">
+  <div class="search-option">
+    <mat-form-field>
+      <mat-label>{{ 'searchBy' | translate }}</mat-label>
+      <mat-select [(value)]="searchctrlvalue" (valueChange)="changectrl($event)">
+        @for (ctrl of searchctrl; track ctrl) {
+          <mat-option [value]="ctrl">{{ ctrl.key| translate }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  @if (searchctrlvalue.type!='date') {
+    <div class="input">
+      <mat-form-field>
+        <input matInput [placeholder]="searchctrlvalue.key||'choose filter'" [type]="searchctrlvalue.type" [disabled]="!searchctrlvalue" [(ngModel)]="searchvalue"
+          (ngModelChange)="searchTextUpdate.next($event)" />
+        </mat-form-field>
+      </div>
+    }
+    @if (searchctrlvalue.type=='date') {
+      <div class="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" [disabled]="!searchctrlvalue" [(ngModel)]="searchvalue"
+          (ngModelChange)="searchTextUpdate.next($event)">
+        </div>
+      }
+    </div>

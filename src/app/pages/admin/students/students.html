@@ -1,0 +1,19 @@
+<div class="page_hd">
+  <h2>{{ 'students' | translate }}</h2>
+  <div class="float-actions">
+    <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> {{ "addNew" | translate }}</button>
+    <button type="button" mat-raised-button (click)="fileInput.click()"><mat-icon>cloud_upload</mat-icon> {{ 'import' | translate }}</button>
+    <input hidden (change)="chooseExcel($event)" #fileInput type="file">
+  </div>
+
+</div>
+<busnaa-main-list 
+[actions]="actions"
+[search]="[{key:'name',type:'text'},{key:'parent',type:'text'}]" 
+[labels]="[{label: 'name' },{ label: 'phone' },{ label: 'dateAdded' },{label: 'actions',class:'actions' }]"
+[rowKeys]="[{key:'name'},{key:'parent'},{key:'parentInfo?.addedDate',pipe:'CustomdatePipe'}]"
+[service]="service"
+[refresh]="refresh()"
+[isProcessOpration]="isProcessOpration()"
+>
+</busnaa-main-list>

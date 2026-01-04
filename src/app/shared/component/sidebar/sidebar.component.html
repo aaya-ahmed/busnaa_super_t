@@ -1,0 +1,93 @@
+<div class="side_top">
+  <img src="/images/logo.webp" width="115" height="89">
+</div>
+<div>
+  <mat-list>
+    <a mat-list-item matRipple [routerLink]="'/admin/dashboard'" routerLinkActive="active">
+      <mat-icon mat-list-icon>dashboard</mat-icon>
+      <span>
+        {{ 'dashboard' | translate }}
+      </span>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/supervisors'" routerLinkActive="active">
+      <mat-icon mat-list-icon>people</mat-icon>
+      <span>
+        {{ 'supervisors' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/students'" routerLinkActive="active">
+      <mat-icon mat-list-icon svgIcon="students" aria-hidden="false" aria-label="Students"></mat-icon>
+      <span>
+        {{ 'students' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/trips'" routerLinkActive="active">
+
+      <mat-icon mat-list-icon>place</mat-icon>
+      <span>
+
+        {{ 'trips' | translate }}
+      </span>
+
+    </a>
+       <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/bus-location'" routerLinkActive="active">
+      <mat-icon mat-list-icon>place</mat-icon>
+      <span>
+
+        {{ 'schoolsLocations' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple class="pointer" (click)="openInfo()">
+      <mat-icon mat-list-icon svgIcon="school" aria-hidden="false" aria-label="School"></mat-icon>
+      <span>
+        {{ 'profile' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/tracking'" routerLinkActive="active">
+
+      <mat-icon mat-list-icon>map</mat-icon>
+      <span>
+        {{ 'tracking' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/reports'" routerLinkActive="active">
+      <mat-icon mat-list-icon>summarize</mat-icon>
+      <span>
+
+        {{ 'reports' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/chat'" routerLinkActive="active">
+      <mat-icon mat-list-icon>chat</mat-icon>
+      <span>
+
+        {{ 'chat' | translate }}
+      </span>
+
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item matRipple [routerLink]="'/admin/campaign'" routerLinkActive="active">
+      <mat-icon mat-list-icon>campaign</mat-icon>
+      <span>
+
+        {{ 'campaign' | translate }}
+      </span>
+
+    </a>
+ 
+  </mat-list>
+</div>

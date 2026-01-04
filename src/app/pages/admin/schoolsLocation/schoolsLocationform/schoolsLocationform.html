@@ -1,0 +1,58 @@
+<div class="form_box">
+  <h2>
+    @if(data().key){
+    {{ 'update' | translate }} {{ 'schoolLocation' | translate }}
+    }@else {
+    {{ 'add_new' | translate }}
+    }
+  </h2>
+  <div>
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'name' | translate }}</mat-label>
+        <input matInput placeholder="Name" [field]="dataForm.name">
+        @if(dataForm.name().invalid()&& dataForm.name().touched()){
+        @for(errorKey of dataForm.name().errors();track $index){
+        <mat-error>{{errorKey.message}}</mat-error>
+        }
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'location' | translate }}</mat-label>
+        <input matInput placeholder="location" [field]="dataForm.location">
+               @if(dataForm.location().invalid()&& dataForm.location().touched()){
+        @for(errorKey of dataForm.location().errors();track $index){
+        <mat-error>{{errorKey.message}}</mat-error>
+        }
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'country' | translate }}</mat-label>
+        <input matInput placeholder="country" [field]="dataForm.country!" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'government' | translate }}</mat-label>
+        <mat-select [field]="dataForm.government!">
+          @for(item of governments;track item.name){
+
+            <mat-option
+              [value]="item.name">{{language()=='en'?item.nameEn:item.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        @if(submitting()){
+          <div class="gn_loader">
+            <mat-spinner diameter="30"></mat-spinner>
+          </div>
+        }@else {
+          <button mat-raised-button class="save" type="button" (click)="save()" [disabled]="dataForm().invalid()">{{ 'save' | translate
+            }}</button>
+          <button mat-raised-button type="button" (click)="cancal()">{{ 'cancel' | translate }}</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<ul>
+  <li class="list_item">
+    <mat-form-field style="width: 100%;">
+      <mat-select [formControl]="supervisor_ctrl" (selectionChange)="onExSupervisorSelectionChanged()">
+        <mat-option value="">
+          {{ 'choose_ex_supervisor' | translate }}
+        </mat-option>
+        @for(item of supervisorsList();track item){
+          <mat-option  [value]="item" >
+            {{item.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </li>
+  @for( item of additionalSupervisorsList();let i=$index;track item){
+    @if(item.mode==mode()||item.mode==-1){
+      <li  class="list_item">
+          <span>
+          <b>{{ item.name}}</b>
+        </span>
+        <button mat-icon-button color="primary" aria-label="Delete" (click)="deleteExSupervisor(i,item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </li>
+    }
+  }
+</ul>

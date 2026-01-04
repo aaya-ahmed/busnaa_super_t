@@ -1,0 +1,29 @@
+@use '../../../../../variables' as colors;
+.mdc-checkbox__background{
+    background-color: colors.$yellow !important;
+}
+.trip-card{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.25rem 1rem;
+    width: 98%;
+    margin: auto;
+    margin-bottom: 0.25rem;
+}
+.loading{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+.no-data{
+    text-align: center;
+    color: colors.$red;
+}
+@media(max-width:450px) {
+    .trip-card{
+    flex-direction: column;
+    width: 95%;
+}
+}

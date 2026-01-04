@@ -1,0 +1,10 @@
+<div>
+    <h2 class="popup_header">{{data.title|translate}}</h2>
+    <div class="popup_body">
+        <ng-container *ngComponentOutlet="data.component; inputs: data.inputs">
+        </ng-container>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button (click)="closemodal()">{{ 'close' | translate }}</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,60 @@
+@if(isLoading){
+<mat-spinner [diameter]="20"></mat-spinner>
+
+}@else {
+<div class="options">
+  <div class="excel-section">
+    <button mat-button type="button" (click)="file.click()" class="mat-raised-button import-label">{{ 'import_students'
+      | translate
+      }}</button>
+    <input mat-input hidden type="file" id="xlsx-file" #file (change)="onFileSelected($event)"
+      accept=".xlsx,.xls,.csv,.xlsm" class="file_input" />
+  </div>
+  <button mat-raised-button type="button" color="primary" (click)="getTripsStudents()">{{ 'clone_trip' |
+    translate}}</button>
+</div>
+<ul>
+  <li class="form">
+    <div class="single_list_item">
+      <mat-form-field>
+        <input type="text" placeholder="Search Student" aria-label="Search Student" matInput [formControl]="student_ctrl"
+          [matAutocomplete]="auto" [value]="student_ctrl.value?.name??''">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+          (optionSelected)="onStudentSelectionChanged($event)">
+           @for(option of students();track option){
+          <mat-option [value]="option">
+            {{option.name}}
+          </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ 'order' | translate }}</mat-label>
+        <input type="text" matInput [formControl]="order_ctrl">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="warn" (click)="addEvent()" [disabled]="!student?.key && !order_ctrl.value">{{
+        'add' | translate }} {{ 'student' | translate
+        }}</button>
+
+    </div>
+  </li>
+  @for( item of studentsTrip();let i = $index;track item){
+  @if(item?.mode==mode()||item.mode==-1){
+  <li class="list_item">
+    <span>
+      <b>{{ item.name}}</b>
+    </span>
+    <button mat-icon-button color="primary" aria-label="Delete" (click)="deleteStudent(i,item)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+
+  }
+  }
+
+
+</ul>
+
+}

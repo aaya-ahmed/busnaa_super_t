@@ -1,0 +1,103 @@
+<div class="form_box">
+  <h2>
+    @if(data()?.key){
+
+    {{ 'update' | translate }} {{ 'student' | translate }}
+    }@else {
+    {{ 'add_new' | translate }}
+    }
+  </h2>
+  <div>
+    <form >
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'name' | translate }}</mat-label>
+          <input matInput placeholder="Name" [field]="studentForm.name">
+          @for(error of studentForm.name().errors();track $index ){
+          <mat-error>{{error.message}}</mat-error>
+          }
+        </mat-form-field>
+        @if(!selectedParent&&!isNewParent){
+        <div class="parentBox">
+          <h2>{{ 'phone' | translate }}</h2>
+          <div class="parentsField">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'search' | translate }} {{ 'phone' | translate }}</mat-label>
+              <input type="text" matInput placeholder="Search Parent" [formControl]="searchCtrl" autocomplete="off">
+              @if(loadingParents){
+              <mat-spinner diameter="30"></mat-spinner>
+              }
+            </mat-form-field>
+            @if(parents.length){
+            <ul class="parentsDropDown">
+              @for(item of parents;track item.key){
+              <li (click)="chooseParent(item)">
+                <b>{{ item.phone }}</b>
+                <span>{{ item.address}}</span>
+              </li>
+              }
+            </ul>
+            }
+          </div>
+          <div class="split">OR</div>
+          <button mat-raised-button type="button" color="warn" (click)="newParent()">{{ 'add_new' | translate }}</button>
+        </div>
+        }@else {
+        <div class="parentBox">
+          @if (!data()?.key) {
+            <span class="closeBtn" (click)="removeParent()"></span>
+          }
+          <h2>{{ 'parent' | translate }}</h2>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'phone' | translate }}</mat-label>
+            <input matInput type="text" placeholder="Phone" [field]="studentForm.parent" (blur)="getParent($event.target.value)">
+            @for(error of studentForm.parent().errors();track $index ){
+            <mat-error>{{error.message}}</mat-error>
+            }
+          </mat-form-field>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'location' | translate }}</mat-label>
+              <input matInput placeholder="Latlng" [field]="studentForm.latlng">
+              @for(error of studentForm.latlng().errors();track $index ){
+              <mat-error>{{error.message}}</mat-error>
+              }
+            </mat-form-field>
+            @if(studentForm.latlng().valid()){
+              <busnaa-student-location  [location]="studentForm.latlng().value()" (newlocation)="setlatlng($event)" ></busnaa-student-location>  
+            }
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'address' | translate }}</mat-label>
+              <textarea matInput placeholder="Address" rows="4" [field]="studentForm.address"
+                cdkTextareaAutosize></textarea>
+            </mat-form-field>
+            <mat-form-field floatLabel="always" appearance="outline">
+              <mat-label>{{ 'block' | translate }}</mat-label>
+              <mat-slide-toggle color="primary" [field]="studentForm.isBlocked">{{'block'|translate}}</mat-slide-toggle>
+              <input matInput style="display: none;" />
+            </mat-form-field>
+          </div>
+  
+        </div>
+        }
+        <!--
+        <div class="parentBox" *ngIf="trips?.length>0&&(dataForm.valid&&parentForm.valid)" >
+          <h2>{{'trips'|translate}}</h2>
+          <app-trip  [trips]="trips" [student]="data" (newtrips)="setnewtrips($event)"></app-trip>
+        </div> -->
+  
+  
+        <div>
+          @if(submitting()){
+          <div class="gn_loader">
+            <mat-spinner diameter="30"></mat-spinner>
+          </div>
+          }
+          @else {
+          <button mat-raised-button type="button" color="accent" (click)="save()" [disabled]="studentForm().invalid()">{{
+            'save' | translate }}</button>
+          <button mat-raised-button type="button" (click)="cancal()">{{ 'cancel' | translate }}</button>
+          }
+        </div>
+    </form>
+  </div>
+</div>

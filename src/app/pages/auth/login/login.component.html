@@ -1,0 +1,33 @@
+<form id="form_box">
+  @if(viewLoader()){
+    <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+  }
+  <img src="/images/logo.webp" width="165" height="127" fetchpriority="high" />
+  <div>
+  <span>
+      <label for="username">{{ 'username' | translate }}</label>
+      <input type="text" [field]="loginForm.username">
+      @if(loginForm.username().touched() && loginForm.username().invalid()){
+        <mat-error>
+          {{ 'required'|translate}}
+        </mat-error>
+      }
+  </span>
+  <span>
+      <label for="password">{{ 'password' | translate }}</label>
+      <input type="password"  [field]="loginForm.password">
+            @if(loginForm.password().touched() && loginForm.password().invalid()){
+        <mat-error>
+          {{ 'required'|translate}}
+        </mat-error>
+      }
+  </span>
+  <span>
+    @if(viewLoader()){
+      <mat-spinner diameter="40"></mat-spinner>
+    }@else {
+      <button (click)="signIn()" [disabled]="loginForm().invalid()">{{ 'login' | translate }}</button>
+    }
+  </span>
+  </div>
+</form>

@@ -1,0 +1,33 @@
+.excel-section {
+    display: flex;
+    justify-content: flex-end;
+
+    .import-label {
+        margin: 1rem 0;
+    }
+}
+
+.single_list_item {
+    width: 100%;
+    flex-direction: column;
+}
+
+.options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:first-child{
+
+        border: none;
+    }
+
+    .mat-mdc-form-field {
+        width: 100%;
+    }
+}

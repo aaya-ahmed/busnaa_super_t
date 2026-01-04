@@ -1,0 +1,34 @@
+@use './_variables.scss' as colors;
+.form_box {
+  padding: 20px;
+
+  h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    margin-right: 10px;
+  }
+}
+.custom_form_field {
+  padding-bottom: 1.34375em;
+  margin: .25em 0;
+}
+.gn_loader{
+  mat-spinner{
+    margin: 0px auto;
+  }
+}
+.mat-mdc-form-field-error {
+  position: absolute;
+  bottom: -22px;
+  font-size: 0.7em;
+}
+.save{
+  background-color: colors.$yellow!important;
+}

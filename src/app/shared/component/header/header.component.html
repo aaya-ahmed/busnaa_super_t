@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="toggleMenu();">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ 'title' | translate }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openInfo()">
+        <mat-icon mat-list-icon svgIcon="school" aria-hidden="false" aria-label="School"></mat-icon>
+        <span>{{ 'profile' | translate }}</span>
+      </button>
+      <button mat-menu-item (click)="openSuper()">
+        <mat-icon>fingerprint</mat-icon>
+        <span>{{ 'super_access' | translate }}</span>
+      </button>
+      <button mat-menu-item (click)="signOut()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>{{ 'logout' | translate }}</span>
+      </button>
+    </mat-menu>
+</mat-toolbar>
