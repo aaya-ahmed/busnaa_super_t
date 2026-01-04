@@ -8,6 +8,7 @@ import { IPutParentData } from "../../shared/model/parent";
 @Injectable({
     providedIn: 'any'
 })
+
 export class StudentParentService {
     constructor(private studentService: StudentService, private parentService: ParentService, private schoolService: SchoolService) { }
     getSearchedStudentsPaged(startKey?: { value: string, key: string }, searchingKey: '' | 'name' | 'parent' = '', searchingValue?: string) {
