@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2') format('woff2');
+  src: url('./assets/fonts/latin.woff2') format('woff2');
   unicode-range: U+0000-00FF; /* Latin */
 }
 @font-face {
@@ -14,7 +14,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2') format('woff2');
+  src: url('./assets/fonts/arbic.woff2') format('woff2');
   unicode-range: U+0600-06FF; /* Arabic */
 }
 
@@ -24,7 +24,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2') format('woff2');
+  src: url('./assets/fonts/latin.woff2') format('woff2');
   unicode-range: U+0000-00FF;
 }
 @font-face {
@@ -32,7 +32,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2') format('woff2');
+  src: url('./assets/fonts/arbic.woff2') format('woff2');
   unicode-range: U+0600-06FF;
 }
 
@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2') format('woff2');
+  src: url('./assets/fonts/latin.woff2') format('woff2');
   unicode-range: U+0000-00FF;
 }
 @font-face {
@@ -50,6 +50,6 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v50/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2') format('woff2');
+  src: url('./assets/fonts/arbic.woff2') format('woff2');
   unicode-range: U+0600-06FF;
 }
