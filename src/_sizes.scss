@@ -6,8 +6,8 @@ $breakpoints: (
   "xl":1920px
 );
 
-@each $bp, $min-width in $breakpoints {
-  @if $min-width == 0 {
+@each $bp, $max-width in $breakpoints {
+  @if $max-width == 0 {
     // No media query for default .col-*
     @for $i from 1 through 12 {
       .col-#{$i} {
@@ -17,7 +17,7 @@ $breakpoints: (
     }
   } @else {
     // Media query
-    @media (min-width: #{$min-width}) {
+    @media (max-width: #{$max-width}) {
       @for $i from 1 through 12 {
         .col-#{$bp}-#{$i} {
           flex: 1;
