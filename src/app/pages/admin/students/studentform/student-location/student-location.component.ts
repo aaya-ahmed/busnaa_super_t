@@ -21,7 +21,7 @@ export class StudentLocationComponent {
           attribution: '&copy; OpenStreetMap contributors'
         })
       ],
-      center:environment.fixedLocation,
+      center:environment.fixedLocation as LatLngExpression,
       zoom: 10
     };
   constructor() {
