@@ -1,0 +1,810 @@
+[
+    {
+        "country_code": "1",
+		"lengths": [10]
+    },
+	{
+		"country_code": "297",
+		"lengths": [7]
+	},
+	{
+		"country_code": "93",
+		"lengths": [9]
+	},
+	{
+		"country_code": "244",
+		"lengths": [9]
+	},
+	{
+		"country_code": "358",
+		"lengths": [6, 7, 8]
+	},
+	{
+		"country_code": "355",
+		"lengths": [9]
+	},
+	{
+		"country_code": "376",
+		"lengths": [6]
+	},
+	{
+		"country_code": "971",
+		"lengths": [9]
+	},
+	{
+		"country_code": "54",
+		"lengths": [8, 9, 10, 11, 12]
+	},
+	{
+		"country_code": "374",
+		"lengths": [8]
+	},
+	{
+		"country_code": "61",
+		"lengths": [9]
+	},
+	{
+		"country_code": "43",
+		"lengths": [10, 11, 12, 13, 14]
+	},
+	{
+		"country_code": "994",
+		"lengths": [9]
+	},
+	{
+		"country_code": "257",
+		"lengths": [8]
+	},
+	{
+		"country_code": "32",
+		"lengths": [9, 8]
+	},
+	{
+		"country_code": "229",
+		"lengths": [8]
+	},
+	{
+		"country_code": "226",
+		"lengths": [8]
+	},
+	{
+		"country_code": "880",
+		"lengths": [8, 9, 10]
+	},
+	{
+		"country_code": "359",
+		"lengths": [8, 9]
+	},
+	{
+		"country_code": "973",
+		"lengths": [8]
+	},
+	{
+		"country_code": "387",
+		"lengths": [8]
+	},
+	{
+		"country_code": "375",
+		"lengths": [9]
+	},
+	{
+		"country_code": "501",
+		"lengths": [7]
+	},
+	{
+		"country_code": "591",
+		"lengths": [8]
+	},
+	{
+		"country_code": "55",
+		"lengths": [10, 11]
+	},
+	{
+		"country_code": "673",
+		"lengths": [7]
+	},
+	{
+		"country_code": "975",
+		"lengths": [8]
+	},
+	{
+		"country_code": "267",
+		"lengths": [8]
+	},
+	{
+		"country_code": "236",
+		"lengths": [8]
+	},
+	{
+		"country_code": "41",
+		"lengths": [9]
+	},
+	{
+		"country_code": "56",
+		"lengths": [9]
+	},
+	{
+		"country_code": "86",
+		"lengths": [11]
+	},
+	{
+		"country_code": "225",
+		"lengths": [10]
+	},
+	{
+		"country_code": "237",
+		"lengths": [9]
+	},
+	{
+		"country_code": "243",
+		"lengths": [9]
+	},
+	{
+		"country_code": "242",
+		"lengths": [9]
+	},
+	{
+		"country_code": "682",
+		"lengths": [5]
+	},
+	{
+		"country_code": "57",
+		"lengths": [10]
+	},
+	{
+		"country_code": "5999",
+		"lengths": [7]
+	},
+	{
+		"country_code": "269",
+		"lengths": [7]
+	},
+	{
+		"country_code": "238",
+		"lengths": [7]
+	},
+	{
+		"country_code": "506",
+		"lengths": [8]
+	},
+	{
+		"country_code": "53",
+		"lengths": [8]
+	},
+	{
+		"country_code": "357",
+		"lengths": [8]
+	},
+	{
+		"country_code": "420",
+		"lengths": [9]
+	},
+	{
+		"country_code": "49",
+		"lengths": [10, 11]
+	},
+	{
+		"country_code": "253",
+		"lengths": [8]
+	},
+	{
+		"country_code": "45",
+		"lengths": [8]
+	},
+	{
+		"country_code": "213",
+		"lengths": [9]
+	},
+	{
+		"country_code": "593",
+		"lengths": [9]
+	},
+	{
+		"country_code": "20",
+		"lengths": [11,10, 9]
+	},
+	{
+		"country_code": "291",
+		"lengths": [7]
+	},
+	{
+		"country_code": "34",
+		"lengths": [9]
+	},
+	{
+		"country_code": "372",
+		"lengths": [7, 8]
+	},
+	{
+		"country_code": "251",
+		"lengths": [9]
+	},
+	{
+		"country_code": "358",
+		"lengths": [7,8,9, 10]
+	},
+	{
+		"country_code": "679",
+		"lengths": [7]
+	},
+	{
+		"country_code": "500",
+		"lengths": [5]
+	},
+	{
+		"country_code": "33",
+		"lengths": [9]
+	},
+	{
+		"country_code": "298",
+		"lengths": [6]
+	},
+	{
+		"country_code": "691",
+		"lengths": [7]
+	},
+	{
+		"country_code": "241",
+		"lengths": [7]
+	},
+	{
+		"country_code": "44",
+		"lengths": [10]
+	},
+	{
+		"country_code": "995",
+		"lengths": [9]
+	},
+	{
+		"country_code": "233",
+		"lengths": [9]
+	},
+	{
+		"country_code": "350",
+		"lengths": [8]
+	},
+	{
+		"country_code": "224",
+		"lengths": [9]
+	},
+	{
+		"country_code": "590",
+		"lengths": [9]
+	},
+	{
+		"country_code": "220",
+		"lengths": [7]
+	},
+	{
+		"country_code": "245",
+		"lengths": [7]
+	},
+	{
+		"country_code": "240",
+		"lengths": [9]
+	},
+	{
+		"country_code": "30",
+		"lengths": [10]
+	},
+	{
+		"country_code": "299",
+		"lengths": [6]
+	},
+	{
+		"country_code": "502",
+		"lengths": [8]
+	},
+	{
+		"country_code": "594",
+		"lengths": [9]
+	},
+	{
+		"country_code": "592",
+		"lengths": [7]
+	},
+	{
+		"country_code": "852",
+		"lengths": [8]
+	},
+	{
+		"country_code": "504",
+		"lengths": [8]
+	},
+	{
+		"country_code": "385",
+		"lengths": [8, 9]
+	},
+	{
+		"country_code": "509",
+		"lengths": [8]
+	},
+	{
+		"country_code": "36",
+		"lengths": [9]
+	},
+	{
+		"country_code": "62",
+		"lengths": [9, 10, 11, 12]
+	},
+	{
+		"country_code": "91",
+		"lengths": [10]
+	},
+	{
+		"country_code": "353",
+		"lengths": [9]
+	},
+	{
+		"country_code": "98",
+		"lengths": [10]
+	},
+	{
+		"country_code": "964",
+		"lengths": [10]
+	},
+	{
+		"country_code": "354",
+		"lengths": [7]
+	},
+	{
+		"country_code": "972",
+		"lengths": [9]
+	},
+	{
+		"country_code": "39",
+		"lengths": [9, 10]
+	},
+	{
+		"country_code": "962",
+		"lengths": [9]
+	},
+	{
+		"country_code": "81",
+		"lengths": [10]
+	},
+	{
+		"country_code": "7",
+		"lengths": [10]
+	},
+	{
+		"country_code": "254",
+		"lengths": [9]
+	},
+	{
+		"country_code": "996",
+		"lengths": [9]
+	},
+	{
+		"country_code": "855",
+		"lengths": [8, 9]
+	},
+	{
+		"country_code": "686",
+		"lengths": [5]
+	},
+	{
+		"country_code": "82",
+		"lengths": [9, 10]
+	},
+	{
+		"country_code": "965",
+		"lengths": [8]
+	},
+	{
+		"country_code": "856",
+		"lengths": [10]
+	},
+	{
+		"country_code": "961",
+		"lengths": [7, 8]
+	},
+	{
+		"country_code": "231",
+		"lengths": [7, 8]
+	},
+	{
+		"country_code": "218",
+		"lengths": [9]
+	},
+	{
+		"country_code": "423",
+		"lengths": [7]
+	},
+	{
+		"country_code": "94",
+		"lengths": [9]
+	},
+	{
+		"country_code": "266",
+		"lengths": [8]
+	},
+	{
+		"country_code": "370",
+		"lengths": [8]
+	},
+	{
+		"country_code": "352",
+		"lengths": [9]
+	},
+	{
+		"country_code": "371",
+		"lengths": [8]
+	},
+	{
+		"country_code": "853",
+		"lengths": [8]
+	},
+	{
+		"country_code": "212",
+		"lengths": [9]
+	},
+	{
+		"country_code": "377",
+		"lengths": [8, 9]
+	},
+	{
+		"country_code": "373",
+		"lengths": [8]
+	},
+	{
+		"country_code": "261",
+		"lengths": [9]
+	},
+	{
+		"country_code": "960",
+		"lengths": [7]
+	},
+	{
+		"country_code": "52",
+		"lengths": [10, 11]
+	},
+	{
+		"country_code": "692",
+		"lengths": [7]
+	},
+	{
+		"country_code": "389",
+		"lengths": [8]
+	},
+	{
+		"country_code": "223",
+		"lengths": [8]
+	},
+	{
+		"country_code": "356",
+		"lengths": [8]
+	},
+	{
+		"country_code": "95",
+		"lengths": [8, 9, 10]
+	},
+	{
+		"country_code": "382",
+		"lengths": [8]
+	},
+	{
+		"country_code": "976",
+		"lengths": [8]
+	},
+	{
+		"country_code": "258",
+		"lengths": [9]
+	},
+	{
+		"country_code": "222",
+		"lengths": [8]
+	},
+	{
+		"country_code": "596",
+		"lengths": [9]
+	},
+	{
+		"country_code": "230",
+		"lengths": [8]
+	},
+	{
+		"country_code": "265",
+		"lengths": [9]
+	},
+	{
+		"country_code": "60",
+		"lengths": [9, 10, 8]
+	},
+	{
+		"country_code": "262",
+		"lengths": [9]
+	},
+	{
+		"country_code": "264",
+		"lengths": [9]
+	},
+	{
+		"country_code": "687",
+		"lengths": [6]
+	},
+	{
+		"country_code": "227",
+		"lengths": [8]
+	},
+	{
+		"country_code": "672",
+		"lengths": [5]
+	},
+	{
+		"country_code": "234",
+		"lengths": [10]
+	},
+	{
+		"country_code": "505",
+		"lengths": [8]
+	},
+	{
+		"country_code": "683",
+		"lengths": [4]
+	},
+	{
+		"country_code": "31",
+		"lengths": [9]
+	},
+	{
+		"country_code": "47",
+		"lengths": [8]
+	},
+	{
+		"country_code": "977",
+		"lengths": [10]
+	},
+	{
+		"country_code": "674",
+		"lengths": [7]
+	},
+	{
+		"country_code": "64",
+		"lengths": [8, 9, 10]
+	},
+	{
+		"country_code": "968",
+		"lengths": [8]
+	},
+	{
+		"country_code": "92",
+		"lengths": [10]
+	},
+	{
+		"country_code": "507",
+		"lengths": [8]
+	},
+	{
+		"country_code": "51",
+		"lengths": [9]
+	},
+	{
+		"country_code": "63",
+		"lengths": [10]
+	},
+	{
+		"country_code": "680",
+		"lengths": [7]
+	},
+	{
+		"country_code": "675",
+		"lengths": [8]
+	},
+	{
+		"country_code": "48",
+		"lengths": [9]
+	},
+	{
+		"country_code": "351",
+		"lengths": [9]
+	},
+	{
+		"country_code": "595",
+		"lengths": [9]
+	},
+	{
+		"country_code": "970",
+		"lengths": [9]
+	},
+	{
+		"country_code": "689",
+		"lengths": [8]
+	},
+	{
+		"country_code": "974",
+		"lengths": [8]
+	},
+	{
+		"country_code": "40",
+		"lengths": [9]
+	},
+	{
+		"country_code": "250",
+		"lengths": [9]
+	},
+	{
+		"country_code": "966",
+		"lengths": [9]
+	},
+	{
+		"country_code": "249",
+		"lengths": [9]
+	},
+	{
+		"country_code": "211",
+		"lengths": [9]
+	},
+	{
+		"country_code": "221",
+		"lengths": [9]
+	},
+	{
+		"country_code": "65",
+		"lengths": [8]
+	},
+	{
+		"country_code": "290",
+		"lengths": [4]
+	},
+	{
+		"country_code": "677",
+		"lengths": [7]
+	},
+	{
+		"country_code": "232",
+		"lengths": [8]
+	},
+	{
+		"country_code": "503",
+		"lengths": [8]
+	},
+	{
+		"country_code": "378",
+		"lengths": [10]
+	},
+	{
+		"country_code": "252",
+		"lengths": [9]
+	},
+	{
+		"country_code": "508",
+		"lengths": [6]
+	},
+	{
+		"country_code": "381",
+		"lengths": [8, 9]
+	},
+	{
+		"country_code": "239",
+		"lengths": [7]
+	},
+	{
+		"country_code": "597",
+		"lengths": [7]
+	},
+	{
+		"country_code": "421",
+		"lengths": [9]
+	},
+	{
+		"country_code": "386",
+		"lengths": [8]
+	},
+	{
+		"country_code": "46",
+		"lengths": [9]
+	},
+	{
+		"country_code": "248",
+		"lengths": [7]
+	},
+	{
+		"country_code": "963",
+		"lengths": [9]
+	},
+	{
+		"country_code": "235",
+		"lengths": [8]
+	},
+	{
+		"country_code": "228",
+		"lengths": [8]
+	},
+	{
+		"country_code": "66",
+		"lengths": [9]
+	},
+	{
+		"country_code": "992",
+		"lengths": [9]
+	},
+	{
+		"country_code": "690",
+		"lengths": [4]
+	},
+	{
+		"country_code": "993",
+		"lengths": [8]
+	},
+	{
+		"country_code": "670",
+		"lengths": [8]
+	},
+	{
+		"country_code": "676",
+		"lengths": [5]
+	},
+	{
+		"country_code": "216",
+		"lengths": [8]
+	},
+	{
+		"country_code": "90",
+		"lengths": [10]
+	},
+	{
+		"country_code": "688",
+		"lengths": [5]
+	},
+	{
+		"country_code": "886",
+		"lengths": [9]
+	},
+	{
+		"country_code": "255",
+		"lengths": [9]
+	},
+	{
+		"country_code": "256",
+		"lengths": [9]
+	},
+	{
+		"country_code": "380",
+		"lengths": [9]
+	},
+	{
+		"country_code": "598",
+		"lengths": [8]
+	},
+	{
+		"country_code": "998",
+		"lengths": [9]
+	},
+	{
+		"country_code": "58",
+		"lengths": [10]
+	},
+	{
+		"country_code": "84",
+		"lengths": [9]
+	},
+	{
+		"country_code": "678",
+		"lengths": [7]
+	},
+	{
+		"country_code": "681",
+		"lengths": [6]
+	},
+	{
+		"country_code": "685",
+		"lengths": [7]
+	},
+	{
+		"country_code": "967",
+		"lengths": [9]
+	},
+	{
+		"country_code": "27",
+		"lengths": [9]
+	},
+	{
+		"country_code": "260",
+		"lengths": [9]
+	},
+	{
+		"country_code": "263",
+		"lengths": [9]
+	}
+]
