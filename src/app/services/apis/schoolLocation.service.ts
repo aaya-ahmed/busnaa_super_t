@@ -4,7 +4,7 @@ import { IPutSchoolLocationData, IPostSchoolLocationData, IschoolLocation } from
 import {  Observable, throwError } from "rxjs";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any'
 })
 export class SchoolLocationService extends BaseService<IschoolLocation, IPostSchoolLocationData, IPutSchoolLocationData> {
     constructor() {

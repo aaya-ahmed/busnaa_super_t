@@ -1,14 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
-import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebase.config';
+import { firbaseBrovider, FIREBASE_AUTH, FIREBASE_DB } from '../../firebase.config';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { ref, query, orderByChild, equalTo, get } from 'firebase/database';
 import { SchoolService } from '../apis/school.service';
 import { IAdmin } from '../../shared/model/admin';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any',
+    deps:[...firbaseBrovider]
 })
 export class AuthenticationService {
     super = new BehaviorSubject<boolean>(false);

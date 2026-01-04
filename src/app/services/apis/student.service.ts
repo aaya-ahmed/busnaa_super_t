@@ -8,7 +8,7 @@ import { ParentService } from "./parent.service";
 import { StudentTripsService } from "./student-trips.service";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any'
 })
 export class StudentService extends BaseService<IStudent, IPostStudentDataQuery, IPutStudentDataQuery> {
     constructor(private _schoolService: SchoolService, private studentTripsService: StudentTripsService) {

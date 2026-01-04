@@ -4,7 +4,7 @@ import { SchoolService } from "./school.service";
 import { IBus, IPostBusData, IPutBusData } from "../../shared/model/bus";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any'
 })
 export class BusService extends BaseService<IBus, IPostBusData, IPutBusData> {
     constructor(private _schoolService: SchoolService) {

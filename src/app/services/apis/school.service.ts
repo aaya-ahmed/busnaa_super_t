@@ -5,7 +5,7 @@ import { of, switchMap, take } from "rxjs";
 import { Router } from "@angular/router";
 import { FIREBASE_AUTH } from "../../firebase.config";
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any'
 })
 export class SchoolService extends BaseService<Ischool, Ischool, Ischool> {
     private afAuth = inject(FIREBASE_AUTH);

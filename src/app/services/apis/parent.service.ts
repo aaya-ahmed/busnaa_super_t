@@ -5,7 +5,7 @@ import { IParent, IPostParentData, IPutParentData } from "../../shared/model/par
 import { filter, of, switchMap } from "rxjs";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'any'
 })
 export class ParentService extends BaseService<IParent, IPostParentData, IPutParentData> {
     constructor(private _schoolService: SchoolService) {
