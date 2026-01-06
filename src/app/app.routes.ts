@@ -3,13 +3,12 @@ import { AuthComponent } from './layout/auth/auth.component';
 import { DefaultComponent } from './layout/default/default.component';
 import { authGuard } from './guards/auth-guard';
 import { tokenGuard } from './guards/token-guard';
-// import { firbaseBrovider } from './firebase.config';
 
 
 export const routes: Routes = [
   {
     path: "",
-    component: AuthComponent,
+    loadComponent: () => import('./layout/auth/auth.component').then(p => p.AuthComponent),
     children: [
       {
         path: '',
@@ -20,8 +19,7 @@ export const routes: Routes = [
   },
   {
     path: "admin",
-    component: DefaultComponent,
-    // providers:[...firbaseBrovider],
+    loadComponent: () => import('./layout/default/default.component').then(p => p.DefaultComponent),
     canActivate: [authGuard, tokenGuard],
     children: [
       {
@@ -46,8 +44,8 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/admin/schoolsLocation/schoolsLocation').then(m => m.SchoolsLocationComponent)
       },
       {
-        path:'dashboard',
-        loadComponent:()=>import('./pages/admin/dashboard/dashboard.component').then(m=>m.DashboardComponent)
+        path: 'dashboard',
+        loadComponent: () => import('./pages/admin/dashboard/dashboard.component').then(m => m.DashboardComponent)
       }
 
     ]
