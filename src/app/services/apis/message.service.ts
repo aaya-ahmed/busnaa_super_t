@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 import { chatGroup, IPostGroupData, IPutGroupData, Messages } from '../../shared/model/chat';
 
 @Injectable({
-  providedIn: 'any'
+  providedIn: 'root'
 })
 export class MessagesService extends BaseService<chatGroup, IPostGroupData, IPutGroupData> {
   constructor(private schoolservice: SchoolService, private parentservice: ParentService) {

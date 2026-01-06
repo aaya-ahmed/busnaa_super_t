@@ -8,7 +8,7 @@ import { dataResponce } from "../../shared/model/responce";
 import { Ischool } from "../../shared/model/school";
 
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 export class TripsService extends BaseService<Itrip, IPostTripData, IPutTripData> {
     private school:Ischool | null=null

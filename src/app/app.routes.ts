@@ -3,14 +3,14 @@ import { AuthComponent } from './layout/auth/auth.component';
 import { DefaultComponent } from './layout/default/default.component';
 import { authGuard } from './guards/auth-guard';
 import { tokenGuard } from './guards/token-guard';
-import { firbaseBrovider } from './firebase.config';
+// import { firbaseBrovider } from './firebase.config';
 
 
 export const routes: Routes = [
   {
     path: "",
     component: AuthComponent,
-    providers:[...firbaseBrovider],
+    // providers:[...firbaseBrovider],
     children: [
       {
         path: '',
@@ -22,7 +22,7 @@ export const routes: Routes = [
   {
     path: "admin",
     component: DefaultComponent,
-    providers:[...firbaseBrovider],
+    // providers:[...firbaseBrovider],
     canActivate: [authGuard, tokenGuard],
     children: [
       {

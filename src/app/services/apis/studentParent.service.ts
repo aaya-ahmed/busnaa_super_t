@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 import { IStudent } from "../../shared/model/student";
 import { IPutParentData } from "../../shared/model/parent";
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 
 export class StudentParentService {

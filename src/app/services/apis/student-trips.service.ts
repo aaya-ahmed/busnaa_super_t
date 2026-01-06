@@ -6,7 +6,7 @@ import { IPostStudentTripsData, IPutStudentTripsData, IStudentTrips } from "../.
 import { IStudent } from "../../shared/model/student";
 
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 export class StudentTripsService extends BaseService<IStudentTrips, IPostStudentTripsData, IPutStudentTripsData> {
     constructor(private _schoolService: SchoolService) {

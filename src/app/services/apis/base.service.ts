@@ -1,17 +1,21 @@
-import { inject } from '@angular/core';
-import { FIREBASE_DB } from '../../firebase.config';
-import { ref, query, orderByChild, equalTo, get, push, set, update, remove, startAt, endAt, limitToFirst, onValue, runTransaction, child, orderByKey } from 'firebase/database';
+// import { inject } from '@angular/core';
+// import { FIREBASE_DB } from '../../firebase.config';
+import { ref, query, orderByChild, equalTo, get, push, set, update, remove, startAt, endAt, limitToFirst, onValue, runTransaction, child, orderByKey, getDatabase } from 'firebase/database';
 import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { FirebaseService } from './firebase.service';
 
-export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends { key?: string } & object> {
-    private database = inject(FIREBASE_DB);
+export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends { key?: string } & object>{
+    // private database = inject(FIREBASE_DB);
+    // private database = getDatabase(firebaseApp);
+    protected firebase=inject(FirebaseService);
     private domainPath = '';
     constructor(domainPath: string) {
         this.domainPath = domainPath;
     }
     public getObject(subPath?: string): Observable<{ responce: Tget | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
             const unsubscribe = onValue(
                 dbRef,
                 (snapshot) => {
@@ -30,7 +34,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     }
     public getRealTimeObject(subPath?: string): Observable<{ responce: Tget | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
             const unsubscribe = onValue(
                 dbRef,
                 (snapshot) => {
@@ -46,7 +50,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     }
     public getList(subPath?: string): Observable<{ responce: Tget[] | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
             const unsubscribe = onValue(
                 dbRef,
                 (snapshot) => {
@@ -65,7 +69,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public getListByChild(childName: string, childValue: string | number | boolean, subPath?: string):
         Observable<{ responce: Tget[] | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
 
             const q = query(dbRef, orderByChild(childName), equalTo(childValue));
             console.log("Full query:", q.toString());
@@ -96,7 +100,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public getObjectByChild(childName: string, childValue: string | number | boolean, subPath?: string):
         Observable<{ responce: Tget | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
             const unsubscribe = onValue(
                 query(dbRef, orderByChild(childName), equalTo(childValue)),
                 (snapshot) => {
@@ -110,7 +114,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public createWithAutoKey(data: Tpost, subPath?: string):
         Observable<{ responce: string | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = push(ref(this.database, this.buildPath(subPath)));
+            const dbRef = push(ref(this.firebase.getDBFirebase(), this.buildPath(subPath)));
             set(dbRef, { ...data }).then(() => {
                 subscriber.next({ responce: dbRef.key, error: null });
             }).catch((error) => {
@@ -121,7 +125,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public create(data: Tpost, key: string, subPath?: string):
         Observable<{ responce: string | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, `${this.buildPath(subPath)}/${key}`);
+            const dbRef = ref(this.firebase.getDBFirebase(), `${this.buildPath(subPath)}/${key}`);
             console.log(dbRef.ref.toString)
             set(dbRef, data).then(() => {
                 subscriber.next({ responce: dbRef.key, error: null });
@@ -133,7 +137,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public createChild(data: any, key: string, subPath?: string):
         Observable<{ responce: string | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, `${this.buildPath(subPath)}/${key}`);
+            const dbRef = ref(this.firebase.getDBFirebase(), `${this.buildPath(subPath)}/${key}`);
             set(dbRef, data).then(() => {
                 subscriber.next({ responce: dbRef.key, error: null });
             }).catch((error) => {
@@ -145,7 +149,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
         Observable<{ responce: string | null, error: string | null }> {
         const dataObj = { ...data };
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, `${this.buildPath(subPath)}${dataObj.key ? '/' + dataObj.key : ''}`);
+            const dbRef = ref(this.firebase.getDBFirebase(), `${this.buildPath(subPath)}${dataObj.key ? '/' + dataObj.key : ''}`);
             delete dataObj.key;
             update(dbRef, dataObj).then(() => {
                 subscriber.next({ responce: dbRef.key, error: null });
@@ -157,7 +161,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     public updateLastChild(data: { [key: string]: string | boolean | number }, subPath?: string):
         Observable<{ responce: string | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, `${this.buildPath(subPath)}`);
+            const dbRef = ref(this.firebase.getDBFirebase(), `${this.buildPath(subPath)}`);
             update(dbRef, data).then(() => {
                 subscriber.next({ responce: dbRef.key, error: null });
             }).catch((error) => {
@@ -167,7 +171,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     }
     public delete(key: string, subPath?: string): Observable<{ responce: boolean, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, `${this.buildPath(subPath)}/${key}`);
+            const dbRef = ref(this.firebase.getDBFirebase(), `${this.buildPath(subPath)}/${key}`);
             remove(dbRef).then(() => {
                 subscriber.next({ responce: true, error: null });
             }).catch((error) => {
@@ -180,7 +184,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
         return new Observable((subscriber) => {
             (async () => {
                 try {
-                    const dbRef = ref(this.database, this.buildPath(subPath));
+                    const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
                     const q = query(dbRef, orderByChild(childPath), equalTo(childValue));
                     const snapshot = await get(q);
                     const deletePromises: Promise<void>[] = [];
@@ -204,7 +208,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
         return new Observable((subscriber) => {
             (async () => {
                 try {
-                    const dbRef = ref(this.database, this.buildPath(subPath));
+                    const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
                     let q;
                     if (searchingKey && searchingValue) {
                         if (startAtObj?.key) {
@@ -246,7 +250,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     }
     runTransactionOnDb(transaction: Record<string, any>): Observable<{ responce: boolean | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database);
+            const dbRef = ref(this.firebase.getDBFirebase());
             update(dbRef, transaction).then(() => {
                 subscriber.next({ responce: true, error: null });
             }).catch((error) => {
@@ -256,7 +260,7 @@ export class BaseService<Tget extends { key?: string }, Tpost, Tupdate extends {
     }
     public getChildList<T>(subPath?: string): Observable<{ responce: T | null, error: string | null }> {
         return new Observable((subscriber) => {
-            const dbRef = ref(this.database, this.buildPath(subPath));
+            const dbRef = ref(this.firebase.getDBFirebase(), this.buildPath(subPath));
             const unsubscribe = onValue(
                 dbRef,
                 (snapshot) => {

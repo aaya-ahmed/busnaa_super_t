@@ -5,7 +5,7 @@ import { TripsService } from "./trip.service";
 import { Itracking, ItrackingData } from "../../shared/model/tracking";
 
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 export class TrackingService extends BaseService<Itracking,ItrackingData,ItrackingData> {
     constructor(private _schoolService: SchoolService, private tripService:TripsService) {

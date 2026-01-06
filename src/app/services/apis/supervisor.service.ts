@@ -7,7 +7,7 @@ import { userTypes } from "../../shared/consts/const";
 import { TripsService } from "./trip.service";
 
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 export class SupervisorService extends BaseService<Isupervisor, IPostSupervisorData, IPutSupervisorData> {
     constructor(private _schoolService: SchoolService, private tripService: TripsService) {

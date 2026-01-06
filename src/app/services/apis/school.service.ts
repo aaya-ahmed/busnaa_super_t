@@ -3,12 +3,16 @@ import { BaseService } from "./base.service";
 import { Ischool } from "../../shared/model/school";
 import { of, switchMap, take } from "rxjs";
 import { Router } from "@angular/router";
-import { FIREBASE_AUTH } from "../../firebase.config";
+import { firebaseApp } from "../../firebase.config";
+import { getAuth } from "firebase/auth";
+import { FirebaseService } from "./firebase.service";
+// import { FIREBASE_AUTH } from "../../firebase.config";
 @Injectable({
-    providedIn: 'any'
+    providedIn: 'root'
 })
 export class SchoolService extends BaseService<Ischool, Ischool, Ischool> {
-    private afAuth = inject(FIREBASE_AUTH);
+    // private afAuth = inject(FIREBASE_AUTH);
+    // private afAuth = getAuth(firebaseApp);
     private route = inject(Router);
     constructor() {
         super('schools');
@@ -36,16 +40,16 @@ export class SchoolService extends BaseService<Ischool, Ischool, Ischool> {
     }
     SignOut() {
         localStorage.removeItem('busnaa_user');
-        this.afAuth.signOut();
+        this.firebase.getAuthFirebase().signOut();
         this.route.navigate(['/']);
     }
     updateSchool(data: Ischool) {
-        const key= `${data.key!}`;
-        data.key='info';
+        const key = `${data.key!}`;
+        data.key = 'info';
         return this.update(data, `${key}`).pipe(
             switchMap((res) => {
                 if (!res.error) {
-                    localStorage.setItem('busnaa_school', JSON.stringify({...data,key:key}));
+                    localStorage.setItem('busnaa_school', JSON.stringify({ ...data, key: key }));
                 }
                 return of(res);
             })

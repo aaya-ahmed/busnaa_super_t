@@ -1,24 +1,28 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
-import { firbaseBrovider, FIREBASE_AUTH, FIREBASE_DB } from '../../firebase.config';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { ref, query, orderByChild, equalTo, get } from 'firebase/database';
+// import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebase.config';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { ref, query, orderByChild, equalTo, get, getDatabase } from 'firebase/database';
 import { SchoolService } from '../apis/school.service';
 import { IAdmin } from '../../shared/model/admin';
+import { firebaseApp } from '../../firebase.config';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
-    providedIn: 'any',
-    deps:[...firbaseBrovider]
+    providedIn: 'root',
 })
 export class AuthenticationService {
     super = new BehaviorSubject<boolean>(false);
-    private afAuth = inject(FIREBASE_AUTH);
-    private database = inject(FIREBASE_DB);
+    // private afAuth = getAuth(firebaseApp);
+    // private database = getDatabase(firebaseApp);
+    // private afAuth = inject(FIREBASE_AUTH);
+    // private database = inject(FIREBASE_DB);
+    private firebase=inject(FirebaseService);
     constructor(private route: Router, private schoolService: SchoolService) { }
     SignIn(data: { username: string, password: string }) {
         return new Promise((resolve, reject) => {
-            signInWithEmailAndPassword(this.afAuth, data.username, data.password).then(async (res) => {
+            signInWithEmailAndPassword(this.firebase.getAuthFirebase(), data.username, data.password).then(async (res) => {
                 const admin = await this.getAdminByEmail(res.user.email!);
                 if (!admin || admin.length === 0) {
                     reject('No admin data found');
@@ -41,7 +45,7 @@ export class AuthenticationService {
     }
     SignOut() {
         localStorage.removeItem('busnaa_user');
-        this.afAuth.signOut();
+        this.firebase.getAuthFirebase().signOut();
         this.route.navigate(['/']);
     }
     accessSuper(val: boolean) {
@@ -49,7 +53,7 @@ export class AuthenticationService {
     }
     private async getAdminByEmail(email: string): Promise<IAdmin[] | null> {
         try {
-            const dbRef = ref(this.database, 'admins');
+            const dbRef = ref(this.firebase.getDBFirebase(), 'admins');
             const q = query(dbRef, orderByChild('username'), equalTo(email));
             const snapshot = await get(q);
             const result: { key: string, data: any }[] = [];
