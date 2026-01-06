@@ -10,7 +10,6 @@ export const routes: Routes = [
   {
     path: "",
     component: AuthComponent,
-    // providers:[...firbaseBrovider],
     children: [
       {
         path: '',

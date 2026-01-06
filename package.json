@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "analyze": "esbuild-visualizer --metadata  ./dist/busnaa_super/stats.json"
   },
   "prettier": {
     "printWidth": 100,

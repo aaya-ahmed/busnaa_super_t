@@ -1,12 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
-// import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebase.config';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ref, query, orderByChild, equalTo, get, getDatabase } from 'firebase/database';
+import {  signInWithEmailAndPassword } from "firebase/auth";
+import { ref, query, orderByChild, equalTo, get } from 'firebase/database';
 import { SchoolService } from '../apis/school.service';
 import { IAdmin } from '../../shared/model/admin';
-import { firebaseApp } from '../../firebase.config';
 import { FirebaseService } from './firebase.service';
 
 @Injectable({
@@ -14,10 +12,6 @@ import { FirebaseService } from './firebase.service';
 })
 export class AuthenticationService {
     super = new BehaviorSubject<boolean>(false);
-    // private afAuth = getAuth(firebaseApp);
-    // private database = getDatabase(firebaseApp);
-    // private afAuth = inject(FIREBASE_AUTH);
-    // private database = inject(FIREBASE_DB);
     private firebase=inject(FirebaseService);
     constructor(private route: Router, private schoolService: SchoolService) { }
     SignIn(data: { username: string, password: string }) {
