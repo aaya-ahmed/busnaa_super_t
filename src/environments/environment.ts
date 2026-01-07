@@ -1,4 +1,3 @@
-import { LatLngExpression } from "leaflet";
 
 export const environment = {
   production: false,
